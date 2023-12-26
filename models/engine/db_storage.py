@@ -39,7 +39,7 @@ class DBStorage:
     def all(self, cls=None):
         """Query on the current database session"""
         result = {}
-        
+
         if cls is None:
             classes_to_query = [State, City]
             for class_obj in classes_to_query:
@@ -72,6 +72,12 @@ class DBStorage:
         """Reload the session // reset the database"""
         Base.metadata.create_all(self.__engine)
 
-        Session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        Session = scoped_session(
+                sessionmaker(bind=self.__engine,
+                             expire_on_commit=False)
+                )
         self.__session = Session()
 
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.__session.remove()

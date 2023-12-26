@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy import Table, Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
+from models import storage_type
 
 metadata = Base.metadata
 
-place_amenity = Table('place_amenity', metadata,
-                       Column('place_id', String(60), ForeignKey("places.id"),
-                              nullable=False, primary_key=True),
-                       Column('amenity_id', String(60),
-                              ForeignKey("amenities.id"),
-                                         nullable=False, primary_key=True))
+place_amenity = Table(
+        'place_amenity', metadata,
+        Column('place_id', String(60), ForeignKey("places.id"),
+               nullable=False, primary_key=True),
+        Column('amenity_id', String(60), ForeignKey("amenities.id"),
+               nullable=False, primary_key=True)
+)
 
 
 class Place(BaseModel, Base):
@@ -35,7 +37,7 @@ class Place(BaseModel, Base):
         """ Initialize class"""
         super().__init__(*args, **kwargs)
 
-    if models.storage_type != 'db':
+    if storage_type != 'db':
 
         @property
         def amenities(self):

@@ -8,4 +8,3 @@ class Amenity(BaseModel, Base):
     """ Implements the amenity model"""
     __tablename__ = "amenities"
     name = Column(String(128), nullable=False)
-
