@@ -41,7 +41,7 @@ class DBStorage:
         result = {}
 
         if cls is None:
-            classes_to_query = [State, City]
+            classes_to_query = [User, State, City, Amenity, Place, Review]
             for class_obj in classes_to_query:
                 query_result = self.__session.query(class_obj).all()
                 for obj in query_result:
