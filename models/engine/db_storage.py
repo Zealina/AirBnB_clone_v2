@@ -1,4 +1,4 @@
-#!/usr/bin/pythoni3
+#!/usr/bin/python3
 """Module: Data Base storage of data"""
 
 from models.base_model import BaseModel, Base
