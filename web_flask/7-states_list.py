@@ -15,7 +15,8 @@ def rm_current_session(exception=None):
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    return render_template("7-states_list.html", objects=storage.all(State))
+    states = sorted(list(storage.all(State).values()), key=lambda x: x.name)
+    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == '__main__':

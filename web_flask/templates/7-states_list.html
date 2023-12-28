@@ -5,8 +5,8 @@
     <BODY>
 	<H1>States</H1>
 	<UL>
-		{% for key, value in objects.items() %}
-		<LI>{{ value.id }}: <B>{{ value.name }}</B></LI>
+		{% for object in states %}
+		<LI>{{ object.id }}: <B>{{ object.name }}</B></LI>
 		{% endfor %}
 	</UL>
     </BODY>
