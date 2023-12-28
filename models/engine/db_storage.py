@@ -80,4 +80,4 @@ class DBStorage:
 
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
-        self.__session.remove()
+        self.__session.close()
