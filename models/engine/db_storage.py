@@ -35,7 +35,6 @@ class DBStorage:
             metadata.drop_all(self.__engine)
         else:
             self.__engine = create_engine(db_url, pool_pre_ping=True)
-        Base.metadata.create_all(self.__engine)
 
     def all(self, cls=None):
         """Query on the current database session"""
