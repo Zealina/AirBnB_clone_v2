@@ -15,7 +15,7 @@ def rm_current_session(exception=None):
 
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
-    states = sorted(list(storage.all(State).values()), key=lambda x: x.name)
+    states = storage.all(State)
     return render_template("8-cities_by_states.html", states=states)
 
 
