@@ -1,0 +1,18 @@
+<HTML lang=en>
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+	    {% if id == "" %}
+	    <H1>States</H1>
+	    <UL>
+		    {% for state in states.values() %}
+		    <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
+		    {% endfor %}
+	    </UL>
+	    {% else %}
+	    {% for city in state %}
+	    {% if id == city.id %}
+	    <
+    </BODY>
+</HTML>
