@@ -14,11 +14,19 @@ def rm_current_session(exception=None):
 
 
 @app.route('/states', strict_slashes=False)
-@app.route('/states/<id>', strict_slashes=False)
-def states(id=""):
-    """Display the states whose Id is supplied as variable"""
+def states():
+    """Displays an HTML page with a list of all States"""
     states = storage.all(State)
-    return render_template("9-states.html", states=states, id=id)
+    return render_template("9-states.html", states=states)
+
+
+@app.route('/states/<id>', strict_slashes=False)
+def states_id(id):
+    """Display the states whose Id is supplied as variable"""
+    for state in storage.all(State).values():
+        if state.id == id:
+            return render_template("9-states.html", state=state)
+    return render_template("9-states.html")
 
 
 if __name__ == '__main__':
