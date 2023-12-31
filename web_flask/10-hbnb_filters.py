@@ -3,6 +3,7 @@
 from models import storage
 from flask import Flask, render_template
 from models.state import State
+from models.amenity import Amenity
 
 app = Flask(__name__)
 
@@ -15,7 +16,10 @@ def rm_current_session(exception=None):
 
 @app.route('/hbnb_filters', strict_slashes=False)
 def hbnb_filters():
-    """Display a html page consisting of multiple files"""
+    """Displays an HTML page with a list of all States"""
+    states = storage.all(State)
+    amenities = storage.all(Amenity)
+    return render_template("10-hbnb_filters.html", states=states, amenities=amenities)
 
 
 if __name__ == '__main__':
